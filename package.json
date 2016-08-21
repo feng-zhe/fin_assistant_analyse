@@ -1,0 +1,22 @@
+{
+  "name": "fin_assistant_analyse",
+  "version": "1.0.0",
+  "description": "the analyse module of fin_assistant",
+  "main": "analyse.js",
+  "scripts": {
+    "test": "mocha test/localtest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@dev.mathitfans.com:projects/fin_assistant_analyse.git"
+  },
+  "keywords": [
+    "analyse"
+  ],
+  "author": "fengzhe",
+  "license": "ISC",
+  "dependencies": {
+    "jStat": "^1.5.3",
+    "mongodb": "^2.2.7"
+  }
+}
