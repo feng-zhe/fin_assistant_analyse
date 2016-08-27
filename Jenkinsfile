@@ -4,10 +4,10 @@ node {
     def nodeHome = tool 'node-4.4.7'
     def cmakeHome = tool 'cmake-main'
     sh "${nodeHome}/bin/npm install"
-    sh "${nodeHome}/bin/npm install -g node-gyp"
+    sh "env CXX=${cmakeHome} ${nodeHome}/bin/npm install -g node-gyp"
 
     stage "build"
-    sh "env CXX=${cmakeHome} node-gyp rebuild"
+    sh "node-gyp rebuild"
 
     stage "smoke-test"
     sh "${nodeHome}/bin/node analyse.js"
