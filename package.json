@@ -15,7 +15,9 @@
   ],
   "author": "fengzhe",
   "license": "ISC",
+  "gypfile": true,
   "dependencies": {
+    "bindings": "^1.2.1",
     "jStat": "^1.5.3",
     "mongodb": "^2.2.7"
   }
