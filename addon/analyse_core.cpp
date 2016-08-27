@@ -6,6 +6,10 @@ namespace AnalyseCore{
     using namespace v8;
 
     void PF_max_var(const FunctionCallbackInfo<Value>& args) {
+        // log
+        std::cout<<"[info] Start C++ function PF_max_var"<<std::endl;
+
+        // create v8::Isolate
         Isolate* isolate = args.GetIsolate();
         Local<Array> array = Array::New(isolate,2);
 
@@ -23,6 +27,9 @@ namespace AnalyseCore{
 
         // return the array
         args.GetReturnValue().Set(array);
+
+        // log
+        std::cout<<"[info] Exiting C++ function PF_max_var"<<std::endl;
     }
 
     void init(Local<Object> exports) {

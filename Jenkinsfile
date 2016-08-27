@@ -3,9 +3,10 @@ node {
     git url: "/home/git/projects/fin_assistant_analyse.git"
     def nodeHome = tool 'node-4.4.7'
     sh "${nodeHome}/bin/npm install"
+    sh "${nodeHome}/bin/npm install -g node-gyp"
 
     stage "build"
-    echo "TODO: this is the build stage"
+    sh "node-gyp rebuild"
 
     stage "smoke-test"
     sh "${nodeHome}/bin/node analyse.js"
