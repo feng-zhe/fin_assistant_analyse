@@ -7,7 +7,7 @@ node {
     sh "${nodeHome}/bin/npm install -g node-gyp"
 
     stage "build"
-    sh "node-gyp rebuild"
+    sh "env CXX=${cmakeHome} node-gyp rebuild"
 
     stage "smoke-test"
     sh "${nodeHome}/bin/node analyse.js"
