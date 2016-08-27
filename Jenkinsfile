@@ -5,7 +5,7 @@ node {
     sh "${nodeHome}/bin/npm install"
 
     stage "build"
-    sh "node-gyp rebuild"
+    sh "${nodeHome}/bin/node-gyp rebuild"
 
     stage "smoke-test"
     sh "${nodeHome}/bin/node analyse.js"
