@@ -1,10 +1,8 @@
 node {
     stage "prerequisites"
     git url: "/home/git/projects/fin_assistant_analyse.git"
-    def nodeHome = tool 'node-4.4.7'
-    def cmakeHome = tool 'cmake-main'
+    def nodeHome = tool 'node-lts'
     sh "${nodeHome}/bin/npm install"
-    sh "env CXX=${cmakeHome} ${nodeHome}/bin/npm install -g node-gyp"
 
     stage "build"
     sh "node-gyp rebuild"
