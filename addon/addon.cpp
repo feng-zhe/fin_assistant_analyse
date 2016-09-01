@@ -1,6 +1,7 @@
 #include <node.h>
-#include <v8.h>
 #include <iostream>
+#include <vector>
+#include "core.h"
 
 namespace Addon {
 
@@ -16,10 +17,23 @@ namespace Addon {
 
         if(args.Length()==1&&args[0]->IsArray()){ // the args[0] is like [[1,2,3],[1.1,2.2,3.3]]
             Local<Array> input = Local<Array>::Cast(args[0]);
-            result = Array::New(isolate,input->Length());
-            for(unsigned int i=0; i<input->Length();++i){
+            // convert data into STL vector
+            std::vector< std::vector<double> > data;
+            for(unsigned int i=0; i< input->Length(); ++i){
                 Local<Array> records = Local<Array>::Cast(input->Get(i)); // the records are [1,2,3]
-                std::cout<<"C++ addon is dealing "<<records->Length()<<" records"<<std::endl;
+                std::vector<double> vec;
+                for(unsigned int j=0; j< records->Length(); ++j){
+                    Local<Number> num = Local<Number>::Cast(records->Get(i));
+                    vec.push_back(num->Value());
+                }
+                data.push_back(vec);
+            }
+            // use core function to calculate
+            auto weights = Core::PF_max_var(data);
+            // convert the result to v8 array
+            result = Array::New(isolate, weights.size());
+            for(unsigned int i=0; i < weights.size(); i++){
+                result->Set(i, Number::New(isolate, weights[i]));
             }
         }
 
