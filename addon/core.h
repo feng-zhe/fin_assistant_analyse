@@ -42,6 +42,10 @@ namespace Core {
             // store the expectation
             allExpt.push_back(exp);
         }
+        //TODO:
+        for(auto exp : allExpt){
+            cout<<exp<<endl;
+        }
         // calculate the deviation
         // calculate the covariance
         // find the ideal portfolio
