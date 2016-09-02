@@ -18,7 +18,7 @@ namespace Addon {
         if(args.Length()==1&&args[0]->IsArray()){ // the args[0] is like [[1,2,3],[1.1,2.2,3.3]]
             Local<Array> input = Local<Array>::Cast(args[0]);
             // convert data into STL vector
-            std::vector< std::vector<double> > data;
+            std::vector<std::vector<double>> data;
             for(unsigned int i=0; i< input->Length(); ++i){
                 Local<Array> records = Local<Array>::Cast(input->Get(i)); // the records are [1,2,3]
                 std::vector<double> vec;
