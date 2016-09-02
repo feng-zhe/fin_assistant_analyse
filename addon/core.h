@@ -25,12 +25,12 @@ namespace Core {
         }
         // calculate the expectation
         for(auto returns : allReturns){
-            map<double,int> tmap;
+            map<double,double> tmap;
             double exp = 0;
             for(auto val : returns){
                 tmap[val]++;
             }
-            const int size = returns.size();
+            const unsigned int size = returns.size();
             for(auto pair: tmap){
                 tmap[pair.first] = tmap[pair.first]/size; // the possibility
             }
