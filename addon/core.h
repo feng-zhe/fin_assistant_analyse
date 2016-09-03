@@ -10,7 +10,7 @@ namespace Core {
     using uint = unsigned int;
 
     const int expStep = 1; // currently is daily expectation
-    const double tryStep = 0.03; // the step when trying the portfolio
+    const double tryStep = 0.02; // the step when trying the portfolio
 
     class IterCalc {
         public:
